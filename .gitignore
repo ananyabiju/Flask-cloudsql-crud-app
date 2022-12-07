@@ -59,6 +59,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+myenv/
 jspm_packages/
 package-lock.json/
 
