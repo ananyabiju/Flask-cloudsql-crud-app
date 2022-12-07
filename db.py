@@ -24,13 +24,11 @@ def open_connection():
     return conn
 
 
-def get(query):
+def getAllEmployee():
     conn = open_connection()
     with conn.cursor() as cursor:
-        queryData = cursor.execute(query)
-        print(queryData)
+        queryData = cursor.execute('SELECT * FROM employees;')
         result = cursor.fetchall()
-        print(result)
         if(queryData > 0):
             return jsonify(result)
         else:

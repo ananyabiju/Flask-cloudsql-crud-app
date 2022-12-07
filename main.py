@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, get
+from db import create, getAllEmployee
 
 
 app = Flask(__name__)
@@ -25,8 +25,9 @@ def addEmployee():
 def getAllEmployees():
     try:
         query = 'SELECT * FROM employees;'
-        db_result = get(query)
-        return jsonify({"body": db_result, "msg": "Successfully listed"}), 200
+        db_result = getAllEmployee()
+        # return jsonify({"body": db_result, "msg": "Successfully listed"}), 200
+        return db_result
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
