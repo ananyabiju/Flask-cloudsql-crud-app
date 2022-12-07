@@ -13,7 +13,7 @@ def welcome_note():
 def addEmployee():
     try:
         data = request.get_json()
-        queryVal = f"""INSERT INTO employees (name, email, position) VALUES(%s, %s, %s), ({data['name']}, {data['email']}, {data['position']})"""
+        queryVal = 'INSERT INTO employees (name, email, position) VALUES(%s, %s, %s)', ({data['name']}, {data['email']}, {data['position']})
         create(queryVal)
         return jsonify({"msg": "Employee Added Successfully"}), 200
     except:
