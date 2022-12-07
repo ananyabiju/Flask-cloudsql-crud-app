@@ -27,18 +27,27 @@ def open_connection():
 def getAllEmployee():
     conn = open_connection()
     with conn.cursor() as cursor:
-        queryData = cursor.execute('SELECT * FROM employees;')
+        queryData = cursor.execute('SELECT * FROM Employees;')
         result = cursor.fetchall()
         if(queryData > 0):
             return jsonify(result)
         else:
             return "Oops! No data available"
 
+def updateEmployee(data, updateKey):
+    conn = open_connection()
+    with conn.cursor() as cursor:
+        if data["name"] != "":
+            cursor.execute(f'UPDATE Employees SET {updateKey} = {data[updateKey]} WHERE name = "{data["name"]}"')
+        else:
+            cursor.execute(f'UPDATE Employees SET {updateKey} = {data[updateKey]} WHERE email = "{data["email"]}"')
+    conn.commit()
+    conn.close()
 
 def create(data):
     conn = open_connection()
     with conn.cursor() as cursor:
-        cursor.execute('INSERT INTO employees (name, email, position) VALUES(%s, %s, %s)',
+        cursor.execute('INSERT INTO Employees (name, email, position) VALUES(%s, %s, %s)',
          ({data['name']}, {data['email']}, {data['position']}))
     conn.commit()
     conn.close()

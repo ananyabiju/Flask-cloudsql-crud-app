@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, getAllEmployee
+from db import create, getAllEmployee, updateEmployee
 
 
 app = Flask(__name__)
@@ -26,10 +26,18 @@ def getAllEmployees():
     try:
         query = 'SELECT * FROM employees;'
         db_result = getAllEmployee()
-        # return jsonify({"body": db_result, "msg": "Successfully listed"}), 200
         return db_result
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
+
+# update an employee
+@app.route('/update', methods=['PATCH'])
+def updateEmployeee():
+    try:
+        data = request.get_json()
+        updateEmployee()
+    except:
+        return jsonify({"msg": "Update Failed"}), 400
 
 
 if __name__=='__main__':
