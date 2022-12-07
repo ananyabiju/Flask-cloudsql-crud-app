@@ -28,7 +28,9 @@ def get(query):
     conn = open_connection()
     with conn.cursor() as cursor:
         queryData = cursor.execute(query)
+        print(queryData)
         result = cursor.fetchall()
+        print(result)
         if(queryData > 0):
             return jsonify(result)
         else:
