@@ -1,6 +1,6 @@
 runtime: python37
 
-env.variables:
+env_variables:
   CLOUD_SQL_USERNAME: demo
   CLOUD_SQL_PASSWORD: demo@123
   CLOUD_SQL_DATABASE_NAME: employeedb
