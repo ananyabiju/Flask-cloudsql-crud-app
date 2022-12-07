@@ -35,9 +35,10 @@ def get(query):
             return "Oops! No data available"
 
 
-def create(query):
+def create(data):
     conn = open_connection()
     with conn.cursor() as cursor:
-        cursor.execute(query)
+        cursor.execute('INSERT INTO employees (name, email, position) VALUES(%s, %s, %s)',
+         ({data['name']}, {data['email']}, {data['position']}))
     conn.commit()
     conn.close()
