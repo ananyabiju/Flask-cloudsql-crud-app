@@ -24,7 +24,7 @@ def addEmployee():
 @app.route('/list', methods=['GET'])
 def getAllEmployees():
     try:
-        query = 'SELECT * FROM employees'
+        query = 'SELECT * FROM employees;'
         db_result = get(query)
         return jsonify({"body": db_result, "msg": "Successfully listed"}), 200
     except:
