@@ -24,17 +24,20 @@ def open_connection():
     return conn
 
 
-def getAllEmployee():
+def read(queryString):
     conn = open_connection()
     with conn.cursor() as cursor:
-        queryData = cursor.execute('SELECT * FROM Employees;')
-        result = cursor.fetchall()
+        if queryString == "":
+            queryData = cursor.execute('SELECT * FROM Employees;')
+            result = cursor.fetchall()
+        else:
+            isEmail = queryString.split("@")
         if(queryData > 0):
             return jsonify(result)
         else:
             return "Oops! No data available"
 
-def updateEmployee(data, updateKey):
+def update(data, updateKey):
     conn = open_connection()
     with conn.cursor() as cursor:
             cursor.execute(f'UPDATE Employees SET {updateKey} = {data[updateKey]} WHERE email = "{data["email"]}"')
