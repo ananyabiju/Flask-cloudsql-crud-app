@@ -20,7 +20,7 @@ def createEmployee():
         return jsonify({"msg": "Employee Creation Failed.. User Already Exists"}), 400
 
 # getting all employees
-@app.route('/read', methods=['GET'])
+@app.route('/read', methods=['POST'])
 def readEmployee():
     try:
         qs = request.get_json()
