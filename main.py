@@ -35,7 +35,8 @@ def getAllEmployees():
 def updateEmployeee():
     try:
         data = request.get_json()
-        updateEmployee()
+        updateEmployee(data["updateKey"], data)
+        return jsonify({"msg": "Successfully Updated"}), 200
     except:
         return jsonify({"msg": "Update Failed"}), 400
 

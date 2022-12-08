@@ -37,9 +37,6 @@ def getAllEmployee():
 def updateEmployee(data, updateKey):
     conn = open_connection()
     with conn.cursor() as cursor:
-        if data["name"] != "":
-            cursor.execute(f'UPDATE Employees SET {updateKey} = {data[updateKey]} WHERE name = "{data["name"]}"')
-        else:
             cursor.execute(f'UPDATE Employees SET {updateKey} = {data[updateKey]} WHERE email = "{data["email"]}"')
     conn.commit()
     conn.close()
