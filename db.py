@@ -35,11 +35,11 @@ def create(data):
 def read(queryString):
     conn = open_connection()
     with conn.cursor() as cursor:
-        if len(queryString) < 0:
-            queryData = cursor.execute(f'SELECT * FROM Employees WHERE email={queryString};')
+        if queryString == 'all':
+            queryData = cursor.execute('SELECT * FROM Employees;')
             result = cursor.fetchall()
         else:
-            queryData = cursor.execute('SELECT * FROM Employees;')
+            queryData = cursor.execute(f'SELECT * FROM Employees WHERE email={queryString};')
             result = cursor.fetchall()
         if(queryData > 0):
             return jsonify(result)

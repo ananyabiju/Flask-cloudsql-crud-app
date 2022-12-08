@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, read, update
+from db import create, read, update, delete
 
 
 app = Flask(__name__)
@@ -20,13 +20,12 @@ def createEmployee():
         return jsonify({"msg": "Employee Creation Failed.. User Already Exists"}), 400
 
 # getting all employees
-@app.route('/read/<email>', methods=['GET'])
+@app.route('/read', methods=['GET'])
 def readEmployee():
     try:
-        qs = request.view_args['email']
-        # db_result = read(qs)
-        lengthOfQ = len(qs)
-        return jsonify(qs), 200
+        qs = request.args.get('employee')
+        db_result = read(qs)
+        return jsonify(db_result), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
@@ -40,11 +39,14 @@ def updateEmployeee():
     except:
         return jsonify({"msg": "Update Failed"}), 400
 
-# @app.route('/delete', methods=['DELETE'])
-# def deleteEmployee():
-#     try:
-#     except:
-#         return jsonify({"msg": "Employee deletion failed"}), 400
+@app.route('/delete', methods=['DELETE'])
+def deleteEmployee():
+    try:
+        data = request.args.get('email')
+        delete(data)
+        return jsonify({'msg': "Successfully deleted the employee"})
+    except:
+        return jsonify({"msg": "Employee deletion failed"}), 400
 
 if __name__=='__main__':
     app.run()
