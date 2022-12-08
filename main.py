@@ -39,14 +39,17 @@ def updateEmployeee():
     except:
         return jsonify({"msg": "Update Failed"}), 400
 
+# delete an employee
 @app.route('/delete', methods=['DELETE'])
 def deleteEmployee():
     try:
         data = request.args.get('email')
         delete(data)
-        return jsonify({'msg': "Successfully deleted the employee"})
+        return jsonify({'msg': "Successfully deleted the employee"}), 200
     except:
         return jsonify({"msg": "Employee deletion failed"}), 400
+
+
 
 if __name__=='__main__':
     app.run()
