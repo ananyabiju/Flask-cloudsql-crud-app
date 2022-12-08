@@ -25,7 +25,7 @@ def readEmployee():
     try:
         qs = request.args.get('email')
         db_result = read(qs)
-        return jsonify(qs), 200
+        return jsonify(db_result), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
