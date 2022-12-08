@@ -4,4 +4,4 @@ env_variables:
   CLOUD_SQL_USERNAME: demo
   CLOUD_SQL_PASSWORD: demo@123
   CLOUD_SQL_DATABASE_NAME: employeedb
-  CLOUD_SQL_CONNECTION_NAME: playground-s-11-e09578d1:us-west1:crud-app
+  CLOUD_SQL_CONNECTION_NAME: playground-s-11-dcbc4fd4:us-west1:crud-app
