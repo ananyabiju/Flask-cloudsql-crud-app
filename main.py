@@ -26,7 +26,7 @@ def readEmployee():
         qs = request.view_args['email']
         # db_result = read(qs)
         lengthOfQ = len(qs)
-        return jsonify(lengthOfQ), 200
+        return jsonify(qs), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
@@ -40,6 +40,11 @@ def updateEmployeee():
     except:
         return jsonify({"msg": "Update Failed"}), 400
 
+@app.route('/delete', methods=['DELETE'])
+def deleteEmployee():
+    try:
+    except:
+        return jsonify({"msg": "Employee deletion failed"}), 400
 
 if __name__=='__main__':
     app.run()
