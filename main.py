@@ -17,15 +17,14 @@ def createEmployee():
         create(data)
         return jsonify({"msg": "Employee Added Successfully"}), 200
     except:
-        return jsonify({"msg": "Employee Creation Failed"}), 400
-
+        return jsonify({"msg": "Employee Creation Failed.. User Already Exists"}), 400
 
 # getting all employees
 @app.route('/read', methods=['GET'])
 def readEmployee():
     try:
         qs = request.args.get('email')
-        # db_result = read()
+        db_result = read(qs)
         return jsonify(qs), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400

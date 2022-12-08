@@ -27,11 +27,12 @@ def open_connection():
 def read(queryString):
     conn = open_connection()
     with conn.cursor() as cursor:
-        if queryString == "":
-            queryData = cursor.execute('SELECT * FROM Employees;')
+        if len(queryString) < 0:
+            queryData = cursor.execute(f'SELECT * FROM Employees WHERE email={queryString};')
             result = cursor.fetchall()
         else:
-            isEmail = queryString.split("@")
+            queryData = cursor.execute('SELECT * FROM Employees;')
+            result = cursor.fetchall()
         if(queryData > 0):
             return jsonify(result)
         else:
