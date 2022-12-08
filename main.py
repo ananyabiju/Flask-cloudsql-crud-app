@@ -23,8 +23,8 @@ def createEmployee():
 @app.route('/read', methods=['GET'])
 def readEmployee():
     try:
-        # qs = request.args.get('employee')
-        db_result = read()
+        qs = request.get_json()
+        db_result = read(qs)
         return jsonify(db_result), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400

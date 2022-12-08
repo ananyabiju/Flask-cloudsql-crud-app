@@ -35,15 +35,24 @@ def create(data):
     conn.close()
 
 # READ
-def read():
+def read(data):
     conn = open_connection()
     with conn.cursor() as cursor:
-        queryData = cursor.execute('SELECT * FROM Employees;')
-        result = cursor.fetchall()
-        # if queryString == 'all':
-        # else:
-        #     queryData = cursor.execute(f'SELECT * FROM Employees WHERE email={queryString};')
-        #     result = cursor.fetchall()
+        if data['status'] == 'all':
+            queryData = cursor.execute('SELECT * FROM Employees;')
+            result = cursor.fetchall()
+        elif data['status'] == 'email':
+            email = data['email']
+            queryData = cursor.execute(f'SELECT * FROM Employees WHERE email={email};')
+            result = cursor.fetchall()
+        elif data['status'] == 'position':
+            position = data['position']
+            queryData = cursor.execute(f'SELECT * FROM Employees WHERE position={position};')
+            result = cursor.fetchall()
+        else:
+            name = data['name']
+            queryData = cursor.execute(f'SELECT * FROM Employees WHERE name={name};')
+            result = cursor.fetchall()
         if(queryData > 0):
             return jsonify(result)
         else:
