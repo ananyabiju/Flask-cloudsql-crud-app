@@ -23,7 +23,7 @@ def createEmployee():
 @app.route('/read', methods=['GET'])
 def readEmployee():
     try:
-        qs = request.args.get('employee')
+        # qs = request.args.get('employee')
         db_result = read()
         return jsonify(db_result), 200
     except:
