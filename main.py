@@ -20,10 +20,10 @@ def createEmployee():
         return jsonify({"msg": "Employee Creation Failed.. User Already Exists"}), 400
 
 # getting all employees
-@app.route('/read', methods=['GET'])
+@app.route('/read/<email>', methods=['GET'])
 def readEmployee():
     try:
-        qs = request.args.get('email')
+        qs = request.view_args['email']
         # db_result = read(qs)
         lengthOfQ = len(qs)
         return jsonify(lengthOfQ), 200
@@ -31,11 +31,11 @@ def readEmployee():
         return jsonify({"msg": "Listing employees failed"}), 400
 
 # update an employee
-@app.route('/update', methods=['PATCH'])
+@app.route('/update', methods=['PUT'])
 def updateEmployeee():
     try:
         data = request.get_json()
-        update(data["updateKey"], data)
+        update(data)
         return jsonify({"msg": "Successfully Updated"}), 200
     except:
         return jsonify({"msg": "Update Failed"}), 400
