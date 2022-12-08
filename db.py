@@ -24,6 +24,14 @@ def open_connection():
     return conn
 
 
+def create(data):
+    conn = open_connection()
+    with conn.cursor() as cursor:
+        cursor.execute('INSERT INTO Employees (name, email, position) VALUES(%s, %s, %s)',
+         ({data['name']}, {data['email']}, {data['position']}))
+    conn.commit()
+    conn.close()
+
 def read(queryString):
     conn = open_connection()
     with conn.cursor() as cursor:
@@ -38,17 +46,18 @@ def read(queryString):
         else:
             return "Oops! No data available"
 
-def update(data, updateKey):
+def update(data):
     conn = open_connection()
     with conn.cursor() as cursor:
-            cursor.execute(f'UPDATE Employees SET {updateKey} = {data[updateKey]} WHERE email = "{data["email"]}"')
+            cursor.execute(f'DELETE * from Employees WHERE email={data["email"]};')
+            cursor.execute('INSERT INTO Employees (name, email, position) VALUES(%s, %s, %s)',
+         ({data['name']}, {data['email']}, {data['position']}))
     conn.commit()
     conn.close()
 
-def create(data):
+def delete(data):
     conn = open_connection()
     with conn.cursor() as cursor:
-        cursor.execute('INSERT INTO Employees (name, email, position) VALUES(%s, %s, %s)',
-         ({data['name']}, {data['email']}, {data['position']}))
+        cursor.execute(f'DELETE * FROM Employees WHERE email={data}')
     conn.commit()
     conn.close()

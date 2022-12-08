@@ -24,8 +24,9 @@ def createEmployee():
 def readEmployee():
     try:
         qs = request.args.get('email')
-        db_result = read(qs)
-        return jsonify(db_result), 200
+        # db_result = read(qs)
+        lengthOfQ = len(qs)
+        return jsonify(lengthOfQ), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
