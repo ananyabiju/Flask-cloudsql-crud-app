@@ -35,10 +35,9 @@ def create(data):
     conn.close()
 
 # READ
-def read(queryString):
+def read():
     conn = open_connection()
     with conn.cursor() as cursor:
-        
         queryData = cursor.execute('SELECT * FROM Employees;')
         result = cursor.fetchall()
         # if queryString == 'all':
