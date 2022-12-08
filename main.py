@@ -25,8 +25,8 @@ def createEmployee():
 def readEmployee():
     try:
         qs = request.query_string()
-        db_result = read()
-        return jsonify(qs)
+        # db_result = read()
+        return jsonify(qs), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
