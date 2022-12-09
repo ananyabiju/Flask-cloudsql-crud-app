@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, read, update_operation, delete, get_employee
-# , get_employee, update, delete, table_create, get_employee
+from db import create, read, update_operation, delete
 
 
 app = Flask(__name__)
@@ -9,7 +8,6 @@ app = Flask(__name__)
 @app.route('/welcome', methods=['GET'])
 def welcome_note():
     return jsonify('Welcome to Flask app')
-
 
 # --------------ADDING EMPLOYEES---------------#
 @app.route('/create', methods=['POST'])
@@ -29,13 +27,13 @@ def readEmployee():
     except Exception as e:
         return jsonify({"msg": "Listing employees failed", "error": e}), 400
 
-# --------------GET A PARTICULAR EMPLOYEE-------------#
-@app.route('/read/<email>', methods=['GET'])
-def readEmployee(email):
-    try:
-        return get_employee(email)
-    except Exception as e:
-        return jsonify({"msg": "Listing employees failed", "error": e}), 400
+# # --------------GET A PARTICULAR EMPLOYEE-------------#
+# @app.route('/read/<email>', methods=['GET'])
+# def readEmployee(email):
+#     try:
+#         return get_employee(email)
+#     except Exception as e:
+#         return jsonify({"msg": "Listing employees failed", "error": e}), 400
 
 # ---------------UPDATE AN EMPLOYEE-------------------#
 @app.route('/update', methods=['PUT'])

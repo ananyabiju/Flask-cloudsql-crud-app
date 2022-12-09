@@ -8,7 +8,7 @@ db_name = os.environ.get('CLOUD_SQL_DATABASE_NAME')
 db_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
 
 
-# CONNECTION EXECUTION WITH CLOUD-SQL
+# --------CONNECTION EXECUTION WITH CLOUD-SQL---------#
 def open_connection():
     unix_socket = f'/cloudsql/{db_connection_name}'
     try:
@@ -24,7 +24,7 @@ def open_connection():
         return e
     return conn
 
-# CREATE
+# --------------CREATE--------------#
 def create(data):
     conn = open_connection()
     with conn.cursor() as cursor:
@@ -33,7 +33,7 @@ def create(data):
     conn.commit()
     conn.close()
 
-# READ
+# ------------READ----------------#
 def read():
     conn = open_connection()
     with conn.cursor() as cursor:
@@ -44,15 +44,15 @@ def read():
         else:
             return "Oops! No data available"
 
-# READ AN EMPLOYEE
-def get_employee(email):
-    conn = open_connection()
-    with conn.cursor() as cursor:
-        cursor.execute('SELECT * FROM Employees WHERE email=%s;', email)
-        result = cursor.fetchone()
-        return jsonify({"data": result}), 200
+# # --------------READ AN EMPLOYEE--------------#
+# def get_employee(email):
+#     conn = open_connection()
+#     with conn.cursor() as cursor:
+#         cursor.execute('SELECT * FROM Employees WHERE email=%s;', email)
+#         result = cursor.fetchone()
+#         return jsonify({"data": result}), 200
 
-# UPDATE
+# --------------UPDATE-----------------#
 def update_operation(data):
     conn = open_connection()
     with conn.cursor() as cursor:
@@ -62,7 +62,7 @@ def update_operation(data):
     conn.commit()
     conn.close()
 
-# DELETE
+# ---------------DELETE-------------#
 def delete(data):
     conn = open_connection()
     with conn.cursor() as cursor:
