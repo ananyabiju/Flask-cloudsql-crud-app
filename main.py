@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, read
+from db import create, read, update_operation
 # , get_employee, update, delete, table_create
 
 
@@ -40,15 +40,15 @@ def readEmployee():
 #         return jsonify({"msg": "Listing employees failed"}), 400
 
 
-# # update an employee
-# @app.route('/update', methods=['PUT'])
-# def updateEmployeee():
-#     try:
-#         data = request.get_json()
-#         update(data)
-#         return jsonify({"msg": "Successfully Updated"}), 200
-#     except:
-#         return jsonify({"msg": "Update Failed"}), 400
+# update an employee
+@app.route('/update', methods=['PUT'])
+def updateEmployeee():
+    try:
+        data = request.get_json()
+        update_operation(data)
+        return jsonify({"msg": "Successfully Updated"}), 200
+    except:
+        return jsonify({"msg": "Update Failed"}), 400
 
 # # delete an employee
 # @app.route('/delete', methods=['DELETE'])
