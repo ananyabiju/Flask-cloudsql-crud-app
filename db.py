@@ -10,7 +10,7 @@ db_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
 
 # CONNECTION EXECUTION WITH CLOUD-SQL
 def open_connection():
-    unix_socket = os.environ.get('SOCKET_VALUE')
+    unix_socket = f'/cloudsql/{db_connection_name}'
     try:
         if os.environ.get('GAE_ENV') == 'standard':
             conn = pymysql.connect(user=db_user,

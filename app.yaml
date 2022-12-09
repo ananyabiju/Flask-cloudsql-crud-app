@@ -5,4 +5,3 @@ env_variables:
   CLOUD_SQL_PASSWORD: demo@123
   CLOUD_SQL_DATABASE_NAME: employeedb
   CLOUD_SQL_CONNECTION_NAME: playground-s-11-a59c6697:us-west1:crud-app
-  SOCKET_VALUE: !Sub "/cloudsql/${CLOUD_SQL_CONNECTION_NAME}"
