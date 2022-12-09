@@ -48,13 +48,9 @@ def read():
 def get_employee(email):
     conn = open_connection()
     with conn.cursor() as cursor:
-        cursor.execute('SELECT * FROM Employees WHERE email=%s', email)
+        cursor.execute('SELECT * FROM Employees WHERE email=%s;', email)
         result = cursor.fetchone()
-        # if len(result) > 0:
         return jsonify({"data": result}), 200
-        # else:
-        #     return "Oops..! No employee found"
-
 
 # UPDATE
 def update_operation(data):

@@ -11,51 +11,50 @@ def welcome_note():
     return jsonify('Welcome to Flask app')
 
 
-# ADDING EMPLOYEES
+# --------------ADDING EMPLOYEES---------------#
 @app.route('/create', methods=['POST'])
 def createEmployee():
     try:
         data = request.get_json()
         create(data)
         return jsonify({"msg": "Employee Added Successfully"}), 200
-    except:
-        return jsonify({"msg": "Employee Creation Failed.. User Already Exists"}), 400
+    except Exception as e:
+        return jsonify({"msg": "Employee Creation Failed.. User Already Exists", "error": e}), 400
 
-# getting all employees
+# ---------------GET ALL EMPLOYEES-------------#
 @app.route('/list', methods=['GET'])
 def readEmployee():
     try:
         return read()
-    except:
-        return jsonify({"msg": "Listing employees failed"}), 400
+    except Exception as e:
+        return jsonify({"msg": "Listing employees failed", "error": e}), 400
 
-# get an employee
+# --------------GET A PARTICULAR EMPLOYEE-------------#
 @app.route('/read/<email>', methods=['GET'])
 def readEmployee(email):
     try:
         return get_employee(email)
-    except:
-        return jsonify({"msg": "Listing employees failed"}), 400
+    except Exception as e:
+        return jsonify({"msg": "Listing employees failed", "error": e}), 400
 
-
-# update an employee
+# ---------------UPDATE AN EMPLOYEE-------------------#
 @app.route('/update', methods=['PUT'])
 def updateEmployeee():
     try:
         data = request.get_json()
         update_operation(data)
         return jsonify({"msg": "Successfully Updated"}), 200
-    except:
-        return jsonify({"msg": "Update Failed"}), 400
+    except Exception as e:
+        return jsonify({"msg": "Update Failed", "error": e}), 400
 
-# delete an employee
+# ---------------DELETE AN EMPLOYEE--------------#
 @app.route('/delete/<email>', methods=['DELETE'])
 def deleteEmployee(email):
     try:
         delete(email)
         return jsonify({'msg': "Successfully deleted the employee"}), 200
-    except:
-        return jsonify({"msg": "Employee deletion failed"}), 400
+    except Exception as e:
+        return jsonify({"msg": "Employee deletion failed", "error": e}), 400
 
 
 
