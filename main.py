@@ -33,8 +33,8 @@ def readEmployee():
 @app.route('/read', methods=['GET'])
 def readEmployee():
     try:
-        data = request.args.get('email')
-        return get_employee(data)
+        # data = request.args.get('email')
+        return get_employee('anu@gmail.com')
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
