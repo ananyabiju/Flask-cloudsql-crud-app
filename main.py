@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
-from db import create, read, get_employee
-# , update, delete, table_create
+from db import create, read
+# , get_employee, update, delete, table_create
 
 
 app = Flask(__name__)
