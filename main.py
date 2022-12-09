@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, read, update_operation, delete
+from db import create, read, update_operation, delete, create_sql_table
 from flask_cors import CORS
 
 
@@ -52,6 +52,14 @@ def updateEmployeee():
 def deleteEmployee(email):
     try:
         delete(email)
+        return jsonify({'msg': "Successfully deleted the employee"}), 200
+    except Exception as e:
+        return jsonify({"msg": "Employee deletion failed", "error": e}), 400
+
+@app.route('/create_table/<TableName>', methods=['POST'])
+def createTable(TableName):
+    try:
+        create_sql_table(TableName)
         return jsonify({'msg': "Successfully deleted the employee"}), 200
     except Exception as e:
         return jsonify({"msg": "Employee deletion failed", "error": e}), 400

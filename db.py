@@ -69,3 +69,10 @@ def delete(data):
         cursor.execute('DELETE FROM Employees WHERE email= %s', (data))
     conn.commit()
     conn.close()
+
+def create_sql_table(name):
+    conn = open_connection()
+    with conn.cursor() as cursor:
+        cursor.execute('CREATE TABLE %s(email VARCHAR(255) NOT NULL, name VARCHAR(255), position VARCHAR(255)), PRIMARY KEY(email)', (name))
+    conn.commit()
+    conn.close()
