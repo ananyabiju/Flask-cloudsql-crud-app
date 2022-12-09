@@ -39,10 +39,10 @@ def read_function():
     with conn.cursor() as cursor:
         queryData = cursor.execute('SELECT * FROM Employees;')
         result = cursor.fetchall()
-        if(queryData > 0):
-            return jsonify(result)
-        else:
-            return "Oops! No data available"
+        # if(queryData > 0):
+        return jsonify(result)
+        # else:
+        #     return "Oops! No data available"
 
 # # UPDATE
 # def update(data):

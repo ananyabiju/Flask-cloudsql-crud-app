@@ -26,7 +26,7 @@ def createEmployee():
 def readEmployee():
     try:
         db_result = read_function()
-        return jsonify(db_result), 200
+        return jsonify({"data": db_result, "msg": "List employees feched"}), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
