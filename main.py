@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request
 from db import create, read, update_operation, delete
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/welcome', methods=['GET'])

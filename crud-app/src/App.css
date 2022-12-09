@@ -23,22 +23,115 @@ body {
 }
 
 nav {
-  width: 100%;
-  background-color: aliceblue;
+  width: 80%;
+  height: 120px !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid #000000;
+}
+
+nav h3 {
+  font-size: 2.5rem;
 }
 
 main {
   width: 100%;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: 100px;
+  padding: 0px 100px;
+}
+
+.mid-content {
+  height: 120px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mid-content button {
+  width: 100px;
+  height: 40px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mid-content button:hover {
+  background-color: rgba(28, 28, 251, 0.808);
+}
+
+button .icon {
+  font-size: 2rem;
 }
 
 table {
-  width: 100%;
+  width: 80%;
   height: 100%;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 2px solid #cccc;
+  height: 70px;
+  text-align: left;
+  padding: 8px;
+  font-size: 1.2rem;
+}
+
+thead tr th {
+  font-size: 1.5rem;
+}
+
+tr:nth-child(even) {
+  background-color: #ddff;
+}
+
+.action-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.action-container button {
+  width: 100px;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-green {
+  background-color: green;
+}
+
+.c-green:hover {
+  background-color: rgba(4, 162, 4, 0.777);
+}
+
+.c-red {
+  background-color: red;
+}
+
+.c-red:hover {
+  background-color: rgba(247, 25, 25, 0.792);
+}
+
+.pntr {
+  cursor: pointer;
 }
