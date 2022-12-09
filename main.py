@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, read, update_operation
+from db import create, read, update_operation, delete
 # , get_employee, update, delete, table_create, get_employee
 
 
@@ -49,15 +49,15 @@ def updateEmployeee():
     except:
         return jsonify({"msg": "Update Failed"}), 400
 
-# # delete an employee
-# @app.route('/delete', methods=['DELETE'])
-# def deleteEmployee():
-#     try:
-#         data = request.args.get('email')
-#         delete(data)
-#         return jsonify({'msg': "Successfully deleted the employee"}), 200
-#     except:
-#         return jsonify({"msg": "Employee deletion failed"}), 400
+# delete an employee
+@app.route('/delete/<email>', methods=['DELETE'])
+def deleteEmployee(email):
+    try:
+        data = request.args.get('email')
+        delete(email)
+        return jsonify({'msg': "Successfully deleted the employee"}), 200
+    except:
+        return jsonify({"msg": "Employee deletion failed"}), 400
 
 
 

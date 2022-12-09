@@ -66,10 +66,10 @@ def update_operation(data):
     conn.commit()
     conn.close()
 
-# # DELETE
-# def delete(data):
-#     conn = open_connection()
-#     with conn.cursor() as cursor:
-#         cursor.execute(f'DELETE FROM Employees WHERE email={data}')
-#     conn.commit()
-#     conn.close()
+# DELETE
+def delete(data):
+    conn = open_connection()
+    with conn.cursor() as cursor:
+        cursor.execute('DELETE FROM Employees WHERE email= %s', (data))
+    conn.commit()
+    conn.close()
