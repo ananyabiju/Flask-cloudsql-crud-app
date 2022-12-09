@@ -50,10 +50,10 @@ def get_employee(email):
     with conn.cursor() as cursor:
         cursor.execute(f'SELECT * FROM Employees WHERE email= {email}')
         result = cursor.fetchall()
-        if len(result) > 0:
-            return jsonify({"data": result}), 200
-        else:
-            return "Oops..! No employee found"
+        # if len(result) > 0:
+        return jsonify({"data": result}), 200
+        # else:
+        #     return "Oops..! No employee found"
 
 
 # # UPDATE
