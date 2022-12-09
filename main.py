@@ -30,11 +30,10 @@ def readEmployee():
         return jsonify({"msg": "Listing employees failed"}), 400
 
 # get an employee
-@app.route('/read', methods=['GET'])
-def readEmployee():
+@app.route('/read/<email>', methods=['GET'])
+def readEmployee(email):
     try:
-        # data = request.args.get('email')
-        return get_employee()
+        return get_employee(email)
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
@@ -53,7 +52,6 @@ def updateEmployeee():
 @app.route('/delete/<email>', methods=['DELETE'])
 def deleteEmployee(email):
     try:
-        data = request.args.get('email')
         delete(email)
         return jsonify({'msg': "Successfully deleted the employee"}), 200
     except:
