@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
-from db import create, read, update_operation, get_employee
-# , get_employee, update, delete, table_create
+from db import create, read, update_operation
+# , get_employee, update, delete, table_create, get_employee
 
 
 app = Flask(__name__)
@@ -29,14 +29,14 @@ def readEmployee():
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
-# get an employee
-@app.route('/read', methods=['GET'])
-def readEmployee():
-    try:
-        # data = request.args.get('email')
-        return get_employee()
-    except:
-        return jsonify({"msg": "Listing employees failed"}), 400
+# # get an employee
+# @app.route('/read', methods=['GET'])
+# def readEmployee():
+#     try:
+#         # data = request.args.get('email')
+#         return get_employee()
+#     except:
+#         return jsonify({"msg": "Listing employees failed"}), 400
 
 
 # update an employee
