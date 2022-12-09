@@ -40,7 +40,7 @@ def read_function():
         cursor.execute('SELECT * FROM Employees;')
         result = cursor.fetchall()
         # if(queryData > 0):
-        return jsonify(result)
+        return jsonify({"data": result}), 200
         # else:
         #     return "Oops! No data available"
 
