@@ -60,7 +60,7 @@ def read():
 def update_operation(data):
     conn = open_connection()
     with conn.cursor() as cursor:
-            cursor.execute(f'DELETE from Employees WHERE email={data["email"]};')
+            cursor.execute('DELETE from Employees WHERE email=%s', (data["email"]))
             cursor.execute('INSERT INTO Employees (name, email, position) VALUES(%s, %s, %s)',
          ({data['name']}, {data['email']}, {data['position']}))
     conn.commit()
