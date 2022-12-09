@@ -25,6 +25,14 @@ def open_connection():
     return conn
 
 
+# CREATE TABLE
+def table_create(name):
+    conn = open_connection()
+    with conn.cursor() as cursor:
+        cursor.execute(f'CREATE TABLE {name}(email VARCHAR(255) NOT NULL, name VARCHAR(255), position VARCHAR(255), PRIMARY KEY(email));')
+    conn.commit()
+    conn.close()
+
 # CREATE
 def create(data):
     conn = open_connection()

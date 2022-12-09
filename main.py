@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, read, update, delete
+from db import create, read, update, delete, table_create
 
 
 app = Flask(__name__)
@@ -8,6 +8,11 @@ app = Flask(__name__)
 @app.route('/welcome', methods=['GET'])
 def welcome_note():
     return jsonify('Welcome to Flask app')
+
+@app.route('/create-table', method=['POST'])
+def create_table():
+    table_name = request.get_json()
+    return table_create(table_name)
 
 # adding employees
 @app.route('/create', methods=['POST'])
