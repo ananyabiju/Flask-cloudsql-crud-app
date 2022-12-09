@@ -26,10 +26,10 @@ def open_connection():
 
 
 # CREATE TABLE
-def table_create(name):
+def table_create():
     conn = open_connection()
     with conn.cursor() as cursor:
-        cursor.execute(f'CREATE TABLE {name}(email VARCHAR(255) NOT NULL, name VARCHAR(255), position VARCHAR(255), PRIMARY KEY(email));')
+        cursor.execute(f'CREATE TABLE Employees(email VARCHAR(255) NOT NULL, name VARCHAR(255), position VARCHAR(255), PRIMARY KEY(email));')
     conn.commit()
     conn.close()
 

@@ -11,8 +11,7 @@ def welcome_note():
 
 @app.route('/create-table', method=['POST'])
 def create_table():
-    table_name = request.get_json()
-    return table_create(table_name['name'])
+    return table_create()
 
 # adding employees
 @app.route('/create', methods=['POST'])
