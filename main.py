@@ -11,7 +11,11 @@ def welcome_note():
 
 @app.route('/create-table', method=['POST'])
 def create_table():
-    return table_create()
+    try:
+        table_create()
+        return jsonify({"msg": "Table succesfully created"}), 200
+    except:
+        return jsonify({"msg": "Table creation failed"}), 400
 
 # adding employees
 @app.route('/create', methods=['POST'])
