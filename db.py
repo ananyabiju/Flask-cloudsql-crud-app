@@ -10,7 +10,7 @@ db_connection_name = os.environ.get('CLOUD_SQL_CONNECTION_NAME')
 
 # CONNECTION EXECUTION WITH CLOUD-SQL
 def open_connection():
-    unix_socket = f'/cloudsql/{db_connection_name}'
+    unix_socket = os.environ.get('SOCKET_VALUE')
     try:
         if os.environ.get('GAE_ENV') == 'standard':
             conn = pymysql.connect(user=db_user,
@@ -44,16 +44,16 @@ def read():
         else:
             return "Oops! No data available"
 
-# READ AN EMPLOYEE
-def get_employee(email):
-    conn = open_connection()
-    with conn.cursor() as cursor:
-        cursor.execute(f'SELECT * FROM Employees WHERE email= {email}')
-        result = cursor.fetchall()
-        # if len(result) > 0:
-        return jsonify({"data": result}), 200
-        # else:
-        #     return "Oops..! No employee found"
+# # READ AN EMPLOYEE
+# def get_employee(email):
+#     conn = open_connection()
+#     with conn.cursor() as cursor:
+#         cursor.execute(f'SELECT * FROM Employees WHERE email= {email}')
+#         result = cursor.fetchall()
+#         # if len(result) > 0:
+#         return jsonify({"data": result}), 200
+#         # else:
+#         #     return "Oops..! No employee found"
 
 
 # # UPDATE

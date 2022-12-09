@@ -29,15 +29,15 @@ def readEmployee():
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
-# getting all employees
-@app.route('/read', methods=['GET'])
-def readEmployee():
-    try:
-        data = request.args.get('email')
-        # return get_employee(data)
-        return jsonify({"data" :data})
-    except:
-        return jsonify({"msg": "Listing employees failed"}), 400
+# # getting all employees
+# @app.route('/read', methods=['GET'])
+# def readEmployee():
+#     try:
+#         data = request.args.get('email')
+#         # return get_employee(data)
+#         return jsonify({"data" :data})
+#     except:
+#         return jsonify({"msg": "Listing employees failed"}), 400
 
 
 # # update an employee
