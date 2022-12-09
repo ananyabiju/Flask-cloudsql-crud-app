@@ -24,15 +24,6 @@ def open_connection():
         return e
     return conn
 
-
-# CREATE TABLE
-def table_create():
-    conn = open_connection()
-    with conn.cursor() as cursor:
-        cursor.execute(f'CREATE TABLE Employees(email VARCHAR(255) NOT NULL, name VARCHAR(255), position VARCHAR(255), PRIMARY KEY(email));')
-    conn.commit()
-    conn.close()
-
 # CREATE
 def create(data):
     conn = open_connection()
@@ -42,31 +33,31 @@ def create(data):
     conn.commit()
     conn.close()
 
-# READ
-def read():
-    conn = open_connection()
-    with conn.cursor() as cursor:
-        queryData = cursor.execute(f'SELECT * FROM Employees;')
-        result = cursor.fetchall()
-        if(queryData > 0):
-            return jsonify(result)
-        else:
-            return "Oops! No data available"
+# # READ
+# def read():
+#     conn = open_connection()
+#     with conn.cursor() as cursor:
+#         queryData = cursor.execute(f'SELECT * FROM Employees;')
+#         result = cursor.fetchall()
+#         if(queryData > 0):
+#             return jsonify(result)
+#         else:
+#             return "Oops! No data available"
 
-# UPDATE
-def update(data):
-    conn = open_connection()
-    with conn.cursor() as cursor:
-            cursor.execute(f'DELETE from Employees WHERE email={data["email"]};')
-            cursor.execute('INSERT INTO Employees (name, email, position) VALUES(%s, %s, %s)',
-         ({data['name']}, {data['email']}, {data['position']}))
-    conn.commit()
-    conn.close()
+# # UPDATE
+# def update(data):
+#     conn = open_connection()
+#     with conn.cursor() as cursor:
+#             cursor.execute(f'DELETE from Employees WHERE email={data["email"]};')
+#             cursor.execute('INSERT INTO Employees (name, email, position) VALUES(%s, %s, %s)',
+#          ({data['name']}, {data['email']}, {data['position']}))
+#     conn.commit()
+#     conn.close()
 
-# DELETE
-def delete(data):
-    conn = open_connection()
-    with conn.cursor() as cursor:
-        cursor.execute(f'DELETE FROM Employees WHERE email={data}')
-    conn.commit()
-    conn.close()
+# # DELETE
+# def delete(data):
+#     conn = open_connection()
+#     with conn.cursor() as cursor:
+#         cursor.execute(f'DELETE FROM Employees WHERE email={data}')
+#     conn.commit()
+#     conn.close()
