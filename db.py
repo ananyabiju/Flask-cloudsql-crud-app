@@ -44,16 +44,16 @@ def read():
         else:
             return "Oops! No data available"
 
-# # READ AN EMPLOYEE
-# def get_employee(email):
-#     conn = open_connection()
-#     with conn.cursor() as cursor:
-#         cursor.execute(f'SELECT * FROM Employees WHERE email= {email}')
-#         result = cursor.fetchall()
-#         # if len(result) > 0:
-#         return jsonify({"data": result}), 200
-#         # else:
-#         #     return "Oops..! No employee found"
+# READ AN EMPLOYEE
+def get_employee(email):
+    conn = open_connection()
+    with conn.cursor() as cursor:
+        cursor.execute('SELECT * FROM Employees WHERE email= %s', (email))
+        result = cursor.fetchall()
+        # if len(result) > 0:
+        return jsonify({"data": result}), 200
+        # else:
+        #     return "Oops..! No employee found"
 
 
 # UPDATE
