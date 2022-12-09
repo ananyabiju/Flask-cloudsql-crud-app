@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
-from db import create
-#  read, update, delete, table_create
+from db import create, read
+# , update, delete, table_create
 
 
 app = Flask(__name__)
@@ -21,14 +21,14 @@ def createEmployee():
     except:
         return jsonify({"msg": "Employee Creation Failed.. User Already Exists"}), 400
 
-# # getting all employees
-# @app.route('/list', methods=['GET'])
-# def readEmployee():
-#     try:
-#         db_result = read()
-#         return jsonify(db_result), 200
-#     except:
-#         return jsonify({"msg": "Listing employees failed"}), 400
+# getting all employees
+@app.route('/list', methods=['GET'])
+def readEmployee():
+    try:
+        db_result = read()
+        return jsonify(db_result), 200
+    except:
+        return jsonify({"msg": "Listing employees failed"}), 400
 
 # # update an employee
 # @app.route('/update', methods=['PUT'])

@@ -33,16 +33,16 @@ def create(data):
     conn.commit()
     conn.close()
 
-# # READ
-# def read():
-#     conn = open_connection()
-#     with conn.cursor() as cursor:
-#         queryData = cursor.execute(f'SELECT * FROM Employees;')
-#         result = cursor.fetchall()
-#         if(queryData > 0):
-#             return jsonify(result)
-#         else:
-#             return "Oops! No data available"
+# READ
+def read():
+    conn = open_connection()
+    with conn.cursor() as cursor:
+        queryData = cursor.execute(f'SELECT * FROM Employees;')
+        result = cursor.fetchall()
+        if(queryData > 0):
+            return jsonify(result)
+        else:
+            return "Oops! No data available"
 
 # # UPDATE
 # def update(data):
