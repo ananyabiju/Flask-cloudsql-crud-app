@@ -34,7 +34,7 @@ def create(data):
     conn.close()
 
 # READ
-def read():
+def read_function():
     conn = open_connection()
     with conn.cursor() as cursor:
         queryData = cursor.execute(f'SELECT * FROM Employees;')

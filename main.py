@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from db import create, read
+from db import create, read_function
 # , update, delete, table_create
 
 
@@ -25,7 +25,7 @@ def createEmployee():
 @app.route('/list', methods=['GET'])
 def readEmployee():
     try:
-        db_result = read()
+        db_result = read_function()
         return jsonify(db_result), 200
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
