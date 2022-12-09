@@ -56,7 +56,7 @@ def deleteEmployee(email):
     except Exception as e:
         return jsonify({"msg": "Employee deletion failed", "error": e}), 400
 
-@app.route('/create_table/<TableName>')
+@app.route('/create_table/<TableName' , methods=['GET'])
 def createTable(TableName):
     try:
         create_sql_table(TableName)
