@@ -37,7 +37,7 @@ def create(data):
 def read_function():
     conn = open_connection()
     with conn.cursor() as cursor:
-        queryData = cursor.execute('SELECT * FROM Employees;')
+        cursor.execute('SELECT * FROM Employees;')
         result = cursor.fetchall()
         # if(queryData > 0):
         return jsonify(result)
