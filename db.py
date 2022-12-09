@@ -45,10 +45,10 @@ def read():
             return "Oops! No data available"
 
 # READ AN EMPLOYEE
-def get_employee(email):
+def get_employee():
     conn = open_connection()
     with conn.cursor() as cursor:
-        cursor.execute('SELECT * FROM Employees WHERE email= %s', (email))
+        cursor.execute('SELECT * FROM Employees WHERE email= "anu@gmail.com"')
         result = cursor.fetchall()
         # if len(result) > 0:
         return jsonify({"data": result}), 200

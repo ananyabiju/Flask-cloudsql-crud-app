@@ -34,7 +34,7 @@ def readEmployee():
 def readEmployee():
     try:
         # data = request.args.get('email')
-        return get_employee('anu@gmail.com')
+        return get_employee()
     except:
         return jsonify({"msg": "Listing employees failed"}), 400
 
